@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>273930390656-hhl3d5hsdlcl6kmum7hgg5acngt5t0b5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.273930390656-hhl3d5hsdlcl6kmum7hgg5acngt5t0b5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCKKDD3m4JWFG46dEGjRuckNENlJlKijtk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>273930390656</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.shauryagupta.Skibs</string>
+	<key>PROJECT_ID</key>
+	<string>skibs-1a3d3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>skibs-1a3d3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:273930390656:ios:ec0b9a4555c3a9a46e2a65</string>
+</dict>
+</plist>

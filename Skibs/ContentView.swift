@@ -8,14 +8,21 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseCore
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct ContentView: View {
-    @State private var email = ""
+    @AppStorage("email") private var email: String = ""
     @State private var password = ""
     @State private var wrongEmail = 0
     @State private var wrongPass = 0
     @State private var errorMess: String = ""
-    @AppStorage("isLoggedIn") var isLoggedIn = false
+    @State public var userUID = ""
+    private var colors: [Color] = [.red, .blue, .green, .orange]
+    @State var isEditing = true
+    let db = Firestore.firestore()
+    /*@AppStorage("isLoggedIn")*/ @State var isLoggedIn = false
+    public
     var body: some View {
         if isLoggedIn {
             Schedules()
@@ -127,6 +134,8 @@ struct ContentView: View {
             
         }
     }
+    
+ 
     
     func createAccount(email: String, password: String) {
         

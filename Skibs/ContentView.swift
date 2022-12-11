@@ -21,7 +21,7 @@ struct ContentView: View {
     private var colors: [Color] = [.red, .blue, .green, .orange]
     @State var isEditing = true
     let db = Firestore.firestore()
-    /*@AppStorage("isLoggedIn")*/ @State var isLoggedIn = false
+    @AppStorage("isLoggedIn") var isLoggedIn = false
     public
     var body: some View {
         if isLoggedIn {
@@ -79,6 +79,32 @@ struct ContentView: View {
                 .padding(.top, 350)
             
             Button {
+                UIApplication.shared.closeKeyboard()
+                logIn(email: email, password: password)
+            } label: {
+                HStack(spacing: 15) {
+                    Text("Log In")
+                        .fontWeight(.semibold)
+                        .contentTransition(.identity)
+                        .foregroundColor(Color(.black))
+                    
+                    Image(systemName: "arrow.right")
+                        .font(.title)
+                        .padding(.leading, -5)
+                        .foregroundColor(Color(.black))
+                }
+                .frame(width: 300)
+                .foregroundColor(.black)
+                .padding(.horizontal, 25)
+                .padding(.vertical)
+                .background {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color(.black).opacity(0.08))
+                }
+            }
+            .padding(.top, 450)
+            
+            Button {
                 DispatchQueue.main.async {
                     createAccount(email: email, password: password)
                 }
@@ -107,30 +133,18 @@ struct ContentView: View {
             .padding(.top, 600)
             
             Button {
-                UIApplication.shared.closeKeyboard()
-                logIn(email: email, password: password)
+                Auth.auth().sendPasswordReset(withEmail: email) { err in
+                    if err != nil {
+                        errorMess = err!.localizedDescription
+                    }
+                }
             } label: {
-                HStack(spacing: 15) {
-                    Text("Log In")
-                        .fontWeight(.semibold)
-                        .contentTransition(.identity)
-                        .foregroundColor(Color(.black))
-                    
-                    Image(systemName: "arrow.right")
-                        .font(.title)
-                        .padding(.leading, -5)
-                        .foregroundColor(Color(.black))
-                }
-                .frame(width: 300)
-                .foregroundColor(.black)
-                .padding(.horizontal, 25)
-                .padding(.vertical)
-                .background {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color(.black).opacity(0.08))
-                }
+                Text("Forgot Password")
+                    .font(.custom("Oswald", size: 20, relativeTo: .title2))
+                    .padding(.top, 700)
+                    .padding(.trailing, 230)
             }
-            .padding(.top, 450)
+
             
         }
     }

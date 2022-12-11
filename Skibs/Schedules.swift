@@ -17,8 +17,6 @@ struct Schedules: View {
     @State var array: [String] = []
     @State var dicData: [String: String]?
     @State var times: [String] = []
-    @State var singleArray: String = ""
-    @State var time: String = ""
     let db = Firestore.firestore()
     let userEmail = Auth.auth().currentUser?.email
     var body: some View {
@@ -32,16 +30,82 @@ struct Schedules: View {
                     
                     
                     TabView {
-//                            ForEach(array, id: \.self) { title in
-//                                ForEach(times, id: \.self) { time in
-                                    ZStack {
-                                        Color.red
-                                        Text("Hello")
+                        if times.count == array.count {
+                            if times != [] {
+                                if array.count == times.count {
+                                    if array != [] {
+                                        ForEach(0..<array.count) { index in
+                                            ZStack {
+                                                Color.red.opacity(0.49)
+                                                    .blur(radius: 5)
+                                                        
+                                                        Text(array[index])
+                                                    
+                                                    .font(.custom("Oswald", size: 28, relativeTo: .title2))
+                                                    .foregroundColor(.white)
+                                                    .bold()
+                                                        
+                                                        
+                                                        VStack {
+                                                            Text("Free At:")
+                                                                .fontWeight(.black)
+                                                                .font(.title2)
+                                                            Text(times[index])
+                                                                .font(.custom("Oswald", size: 28, relativeTo: .title2))
+                                                                .foregroundColor(.blue)
+                                                                .bold()
+                                                                .padding(.top, 75)
+                                                        }
+                                                    
+                                                
+                                            }
+                                            
+                                        }
+                                    } else {
+                                        Button {
+                                            getDocumentData()
+                                            getDocumentTitle()
+                                            
+                                        } label: {
+                                            Image(systemName: "arrow.triangle.2.circlepath")
+                                                .font(.largeTitle)
+                                        }
+                                        
                                     }
-//                                }
-//                            }
+                                } else {
+                                    Button {
+                                        getDocumentData()
+                                        getDocumentTitle()
+                                    } label: {
+                                        Image(systemName: "arrow.triangle.2.circlepath")
+                                            .font(.largeTitle)
+                                    }
+                                    
+                                }
+                            } else {
+                                Button {
+                                    getDocumentData()
+                                    getDocumentTitle()
+                                } label: {
+                                    Image(systemName: "arrow.triangle.2.circlepath")
+                                        .font(.largeTitle)
+                                }
+                            }
+                            
+                        } else {
+                            Button {
+                                getDocumentData()
+                                getDocumentTitle()
+                            } label: {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                    .font(.largeTitle)
+                            }
+                        }
                     }
+                    .zIndex(1000)
                     .tabViewStyle(.page)
+                    .frame(width: 350, height: 300, alignment: .center)
+                    .cornerRadius(5)
                     .navigationTitle("Schedules")
                     .toolbar {
                         
@@ -57,8 +121,10 @@ struct Schedules: View {
                         
                         Button(action: {
                             do {
-                                contentView.isLoggedIn = false
-                                try Auth.auth().signOut()
+                                withAnimation(.easeOut) {
+                                    contentView.isLoggedIn = false
+                                }
+                                    try Auth.auth().signOut()
                             } catch {
                                 print(error)
                             }
@@ -120,6 +186,8 @@ struct Schedules: View {
                         setData(startTime: startTime, endTime: endTime)
                         withAnimation(.easeOut) {
                             isEditing = false
+                            array = []
+                            times = []
                         }
                     } label: {
                         HStack(spacing: 15) {
@@ -190,13 +258,15 @@ struct Schedules: View {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    for document in querySnapshot!.documents {
+                    Task {
+                        for document in querySnapshot!.documents {
                             array.append(document.documentID)
                             print(array)
+                        }
                     }
                 }
             }
-//        return array!
+        //        return array!
     }
     
     func getDocumentData() /*-> [String]*/ {
@@ -212,7 +282,7 @@ struct Schedules: View {
                 }
                 print(times)
             }
-//        return times!
+        //        return times!
     }
 }
 struct Schedules_Previews: PreviewProvider {

@@ -11,6 +11,8 @@
 		D913C2FF2940010400B3E4A3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D913C2FE2940010400B3E4A3 /* FirebaseAuth */; };
 		D913C3012940010400B3E4A3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D913C3002940010400B3E4A3 /* FirebaseFirestore */; };
 		D913C3032940010400B3E4A3 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D913C3022940010400B3E4A3 /* FirebaseFirestoreSwift */; };
+		D95B7C5B2946487700A363B0 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = D95B7C5A2946487700A363B0 /* RiveRuntime */; };
+		D95B7C5E2946488B00A363B0 /* shapes.riv in Resources */ = {isa = PBXBuildFile; fileRef = D95B7C5D2946488B00A363B0 /* shapes.riv */; };
 		D9631D50293C205A0039C249 /* SkibsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9631D4F293C205A0039C249 /* SkibsApp.swift */; };
 		D9631D52293C205A0039C249 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9631D51293C205A0039C249 /* ContentView.swift */; };
 		D9631D54293C205C0039C249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9631D53293C205C0039C249 /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		D900B51E293D2C9B003915C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D95B7C5D2946488B00A363B0 /* shapes.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = shapes.riv; sourceTree = "<group>"; };
 		D9631D4C293C205A0039C249 /* Skibs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skibs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9631D4F293C205A0039C249 /* SkibsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkibsApp.swift; sourceTree = "<group>"; };
 		D9631D51293C205A0039C249 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D913C2FF2940010400B3E4A3 /* FirebaseAuth in Frameworks */,
+				D95B7C5B2946487700A363B0 /* RiveRuntime in Frameworks */,
 				D913C3012940010400B3E4A3 /* FirebaseFirestore in Frameworks */,
 				D913C3032940010400B3E4A3 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -68,6 +72,7 @@
 				D9631D4F293C205A0039C249 /* SkibsApp.swift */,
 				D9C2349929415EBF00484345 /* Schedules.swift */,
 				D9631D51293C205A0039C249 /* ContentView.swift */,
+				D95B7C5D2946488B00A363B0 /* shapes.riv */,
 				D9CDE38E293CEFBC0040630C /* Oswald.ttf */,
 				D9631D53293C205C0039C249 /* Assets.xcassets */,
 				D900B51E293D2C9B003915C8 /* GoogleService-Info.plist */,
@@ -104,6 +109,7 @@
 				D913C2FE2940010400B3E4A3 /* FirebaseAuth */,
 				D913C3002940010400B3E4A3 /* FirebaseFirestore */,
 				D913C3022940010400B3E4A3 /* FirebaseFirestoreSwift */,
+				D95B7C5A2946487700A363B0 /* RiveRuntime */,
 			);
 			productName = Skibs;
 			productReference = D9631D4C293C205A0039C249 /* Skibs.app */;
@@ -135,6 +141,7 @@
 			mainGroup = D9631D43293C205A0039C249;
 			packageReferences = (
 				D913C2FD2940010400B3E4A3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D95B7C592946487600A363B0 /* XCRemoteSwiftPackageReference "rive-ios" */,
 			);
 			productRefGroup = D9631D4D293C205A0039C249 /* Products */;
 			projectDirPath = "";
@@ -150,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D95B7C5E2946488B00A363B0 /* shapes.riv in Resources */,
 				D9631D57293C205C0039C249 /* Preview Assets.xcassets in Resources */,
 				D900B51F293D2C9B003915C8 /* GoogleService-Info.plist in Resources */,
 				D9631D54293C205C0039C249 /* Assets.xcassets in Resources */,
@@ -379,6 +387,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		D95B7C592946487600A363B0 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -396,6 +412,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D913C2FD2940010400B3E4A3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		D95B7C5A2946487700A363B0 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D95B7C592946487600A363B0 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

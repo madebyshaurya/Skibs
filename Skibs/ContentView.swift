@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import RiveRuntime
 
 struct ContentView: View {
     @AppStorage("email") private var email: String = ""
@@ -18,8 +19,6 @@ struct ContentView: View {
     @State private var wrongPass = 0
     @State private var errorMess: String = ""
     @State public var userUID = ""
-    private var colors: [Color] = [.red, .blue, .green, .orange]
-    @State var isEditing = true
     let db = Firestore.firestore()
     @AppStorage("isLoggedIn") var isLoggedIn = false
     public
@@ -37,6 +36,10 @@ struct ContentView: View {
                 .resizable()
                 .opacity(0.3)
                 .ignoresSafeArea()
+            RiveViewModel(fileName: "shapes").view()
+                .ignoresSafeArea(.all)
+                .blur(radius: 30)
+                .opacity(0.8)
             VStack {
                 Image("calendarImage")
                     .resizable()
